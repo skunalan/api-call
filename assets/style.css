@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.footer {
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+}
+
+.footer a {
+  text-decoration: none;
+}
