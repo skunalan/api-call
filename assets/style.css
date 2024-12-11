@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.header-section {
+  background-color: rgba(245, 245, 245, 0.6);
+}
+
 .footer {
   width: 100%;
   bottom: 0;
