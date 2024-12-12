@@ -1,15 +1,4 @@
 const userList = document.getElementById("user-list");
-const dynamicLink = document.getElementById("dynamic-link");
-
-dynamicLink.addEventListener("click", () => {
-  let userId;
-  userId = prompt("Please enter a User ID");
-  if (userId && !isNaN(userId) && Number(userId) > 0 && Number(userId) <= 10) {
-    dynamicLink.href = `/posts/posts.html?userId=${encodeURIComponent(userId)}`;
-  } else {
-    alert("Please enter a valid ID");
-  }
-});
 
 const fetchUsers = async () => {
   try {
@@ -33,16 +22,13 @@ const fetchUsers = async () => {
             Basic Information
               <ul class="information-list">
                 <li>
-                  User ID: ${user.id}
-                </li>
-                <li>
                   User Name: ${user.username}
                 </li>
               </ul>
             </li>
             <li class="list-group-item">
             <i class="icon fa-solid fa-location-dot"></i>
-            Adress Information
+            Address Information
               <ul class="information-list">
                 <li>
                   City: ${user.address.city}
@@ -88,8 +74,27 @@ const fetchUsers = async () => {
     userList.innerHTML = `
     <div class="alert alert-danger text-center fs-3" role="alert">
       An error occured while retrieving users via API
-    </div>`
+    </div>`;
   }
 };
 
-document.addEventListener("DOMContentLoaded", () => fetchUsers());
+document.getElementById("searchForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const userIdInput = Number(document.getElementById("searchInput").value);
+
+  if (
+    userIdInput &&
+    !isNaN(userIdInput) &&
+    userIdInput > 0 &&
+    userIdInput <= 10
+  ) {
+    window.location.href = `/posts/posts.html?userId=${userIdInput}`;
+  } else {
+    alert("Please enter a valid ID (Only number and 1 to 10)");
+  }
+});
+
+window.onload = () => {
+  fetchUsers();
+  document.getElementById("searchInput").value = "";
+};
