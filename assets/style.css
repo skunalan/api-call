@@ -8,10 +8,24 @@
   background-color: rgba(245, 245, 245, 0.6);
 }
 
+.list-group-item {
+  font-weight: bold;
+}
+
+.information-list li {
+  list-style-type: none;
+  font-weight: initial;
+}
+
+.information-icon {
+  padding-right: 1rem;
+  color: rgb(93, 93, 235);
+}
+
 .footer {
   width: 100%;
   bottom: 0;
-  position: absolute;
+  position: fixed;
 }
 
 .footer a {
