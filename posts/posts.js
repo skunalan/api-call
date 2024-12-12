@@ -30,7 +30,7 @@ const fetchUserPosts = async () => {
         <div class="text-center">
           <div class="card-header h5">
           <i class="icon fa-regular fa-comment"></i>
-            ${post.id}</div>
+            Post: ${post.id}</div>
           </div>
         <div class="card-body">
         <h5 class="card-title">${post.title}</h5>
@@ -47,4 +47,6 @@ const fetchUserPosts = async () => {
   }
 };
 
-fetchUserPosts();
+window.onload = () => {
+  fetchUserPosts();
+};
