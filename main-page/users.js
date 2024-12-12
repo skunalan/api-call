@@ -1,4 +1,15 @@
 const userList = document.getElementById("user-list");
+const dynamicLink = document.getElementById("dynamic-link");
+
+dynamicLink.addEventListener("click", () => {
+  let userId;
+  userId = prompt("Please enter a User ID");
+  if (userId && !isNaN(userId) && Number(userId) > 0 && Number(userId) <= 10) {
+    dynamicLink.href = `/posts/posts.html?userId=${encodeURIComponent(userId)}`;
+  } else {
+    alert("Please enter a valid ID");
+  }
+});
 
 const fetchUsers = async () => {
   try {
@@ -18,7 +29,7 @@ const fetchUsers = async () => {
         <div class="card-body">
           <ul class="list-group mb-3">
             <li class="list-group-item">
-            <i class="information-icon fa-solid fa-user"></i>
+            <i class="icon fa-solid fa-user"></i>
             Basic Information
               <ul class="information-list">
                 <li>
@@ -30,7 +41,7 @@ const fetchUsers = async () => {
               </ul>
             </li>
             <li class="list-group-item">
-            <i class="information-icon fa-solid fa-location-dot"></i>
+            <i class="icon fa-solid fa-location-dot"></i>
             Adress Information
               <ul class="information-list">
                 <li>
@@ -42,7 +53,7 @@ const fetchUsers = async () => {
               </ul>
             </li>
             <li class="list-group-item">
-            <i class="information-icon fa-solid fa-building"></i>
+            <i class="icon fa-solid fa-building"></i>
             Company Information
             <ul class="information-list">
                 <li>
@@ -51,7 +62,7 @@ const fetchUsers = async () => {
               </ul>
             </li>
             <li class="list-group-item">
-            <i class="information-icon fa-solid fa-square-phone"></i>
+            <i class="icon fa-solid fa-square-phone"></i>
             Contact Information
             <ul class="information-list">
                 <li>
@@ -66,14 +77,18 @@ const fetchUsers = async () => {
               </ul>
             </li>
           </ul>
-          <a href="" class="btn btn-primary">View Posts</a>
+          <a href="/posts/posts.html?userId=${user.id}" class="btn btn-primary">View Posts</a>
         </div>
       </div>
     </div>
     `;
     });
   } catch (error) {
-    console.error("An error occured while retrieving users via API")
+    console.error("An error occured while retrieving users via API");
+    userList.innerHTML = `
+    <div class="alert alert-danger text-center fs-3" role="alert">
+      An error occured while retrieving users via API
+    </div>`
   }
 };
 
