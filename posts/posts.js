@@ -20,7 +20,7 @@ const fetchUserPosts = async () => {
     <!-- Main Page Button -->
     <div class="my-5 text-center">
       <a href="/" class="btn btn-primary btn-lg" >
-        Main Page
+        Home Page
       </a>
     </div>`;
     posts.forEach((post) => {
